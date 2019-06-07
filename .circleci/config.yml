@@ -6,6 +6,8 @@ jobs:
         environment:
           RAILS_ENV: test
     steps:
+      - checkout
+
       - run:
           name: Install bundler
           command: gem update --system && gem install bundler
