@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-jessie-node
+        environment:
+          RAILS_ENV: test
+    steps:
+      - run:
+          name: Install bundler
+          command: gem update --system && gem install bundler
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - run:
+          name: Install depedencies gems
+          command: bundle install
+
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+
+      - run:
+          name: Run tests
+          command: bundle exec rspec
