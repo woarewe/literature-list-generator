@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: literature-list-generator_development
+  database: literature_list_generator_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: literature-list-generator_test
+  database: literature_list_generator_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: literature-list-generator_production
-  username: literature-list-generator
-  password: <%= ENV['ROBERT-LEGAL_DATABASE_PASSWORD'] %>
+  database: literature_list_generator_production
+  username: literature_list_generator
+  host: <%= ENV['ROBERT_LEGAL_DATABASE_HOST'] %>

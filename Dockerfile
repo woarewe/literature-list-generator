@@ -12,21 +12,16 @@ RUN mkdir -p /app
 # Set working directory
 WORKDIR /app
 
-# Setting env up
-ENV RAILS_ENV production
-ENV RACK_ENV production
-
 # Copy project files
 COPY . .
 
 # Install gems
-RUN bundle install --without development test
+RUN bundle install --without development test --jobs 5
 
 # Precompile assets
-RUN bundle exec rake assets:precompile
 
 # Run migrations
 
 EXPOSE 3000
 
-CMD bundle exec rails db:migrate && bundle exec rails server
+CMD bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec rails server
