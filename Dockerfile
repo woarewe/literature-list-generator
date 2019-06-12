@@ -24,4 +24,4 @@ RUN bundle install --without development test --jobs 5
 
 EXPOSE 3000
 
-CMD bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec rails server
+CMD bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec puma
