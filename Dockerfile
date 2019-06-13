@@ -9,6 +9,10 @@ RUN gem update --system && gem install bundler
 # Create dir in docker image
 RUN mkdir -p /app
 
+# Set env variables
+ENV RAILS_ENV=production
+ENV RACK_ENV=production
+
 # Set working directory
 WORKDIR /app
 
@@ -19,9 +23,9 @@ COPY . .
 RUN bundle install --without development test --jobs 5
 
 # Precompile assets
+RUN bundle exec rails assets:precompile
 
-# Run migrations
-
+# Open port
 EXPOSE 3000
 
-CMD bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec puma
+CMD bundle exec rails db:migrate && bundle exec puma
