@@ -23,7 +23,7 @@ docker pull <app image>
 - Create postgres container
 
 ```shell
-docker container create --publish 5432:5432 --volume postgres_data:/var/lib/postgresql/data --env POSTGRES_USER=literature_list_generator --env POSTGRES_DB=literature_list_generator_production --env POSTGRES_PASSWORD=Zhur999550505 postgres
+docker container create --publish 5432:5432 --volume postgres_data:/var/lib/postgresql/data --env POSTGRES_USER=literature_list_generator --env POSTGRES_DB=literature_list_generator_production --env POSTGRES_PASSWORD=<db password> postgres
 ```
 
 - Create app container
