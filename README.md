@@ -16,27 +16,13 @@ docker pull <app image>
 - Create postgres container
 
 ```shell
-docker container create \
---publish 5432:5432 \
---volume <local volume>:/var/lib/postgresql/data
---env POSTGRES_USER=literature_list_generator \
-POSTGRES_DB=literature_list_generator_production \
-POSTGRES_PASSWORD=<db password> \
-postgres
+docker container create --publish 5432:5432 --volume ./tmp/postgres_data:/var/lib/postgresql/data --env POSTGRES_USER=literature_list_generator --env POSTGRES_DB=literature_list_generator_production --env POSTGRES_PASSWORD=Zhur999550505 postgres
 ```
 
 - Create app container
 
 ```shell
-docker container create \
---publish 3000:3000 \
---env \
-RAILS_ENV=production \
-RACK_ENV=production\
-ROBERT_LEGAL_DATABASE_HOST=postgres \
-ROBERT_LEGAL_DATABASE_PASSWORD=<db password> \
---link <db container>:postgres \
-<app image>
+docker container create --publish 3000:3000 --env RAILS_ENV=production --env RACK_ENV=production --env ROBERT_LEGAL_DATABASE_HOST=postgres --env ROBERT_LEGAL_DATABASE_PASSWORD=<db password> --link <db container>:postgres <app image>
 ```
 
 - Start containers
