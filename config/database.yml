@@ -83,3 +83,4 @@ production:
   database: literature_list_generator_production
   username: literature_list_generator
   host: <%= ENV['ROBERT_LEGAL_DATABASE_HOST'] %>
+  password: <%= ENV['ROBERT_LEGAL_DATABASE_PASSWORD'] %>
